@@ -58,4 +58,11 @@ export const Time = () => {
     }, [])
 
     console.log(weather)
+
+    return (
+        <div>
+            <div className='min-h-[100px] w-20 bg-transparent blur-lg'></div>
+            <h1 className='text-black absolute'>{weather.city}</h1>
+        </div>
+    )
 }
