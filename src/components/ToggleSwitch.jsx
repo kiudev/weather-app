@@ -4,17 +4,16 @@ import PropTypes from 'prop-types'
 export const ToggleSwitch = ({ click }) => {
     return (
         <>
-            <label class="ui-switch">
+            <label className="ui-switch">
                 <input onClick={click} type="checkbox" />
-                <div class="slider">
-                    <div class="circle"></div>
+                <div className="slider">
+                    <div className="circle"></div>
                 </div>
             </label>
-
         </>
     )
 }
 
 ToggleSwitch.propTypes = {
-    click: PropTypes.func
+    click: PropTypes.func,
 }
