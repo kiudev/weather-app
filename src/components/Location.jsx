@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { apiKey } from '../apiKey'
 import { Weather } from './Weather'
 
-export const Time = ({ styleText }) => {
+export const Location = ({ styleText }) => {
     const [weather, setWeather] = useState([])
     const [location, setLocation] = useState('Barcelona')
     const [isVisible, setVisible] = useState(true)
     const [isLoading, setIsLoading] = useState(true)
-    
+
     const fetchWeather = async query => {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${apiKey}`
 
@@ -47,6 +47,7 @@ export const Time = ({ styleText }) => {
 
     useEffect(() => {
         fetchWeather(location)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const currentLocation = event => {
@@ -58,28 +59,37 @@ export const Time = ({ styleText }) => {
         fetchWeather(location)
         setVisible(isVisible)
     }
-    
 
     console.log(weather)
 
     return (
-        <section className="mt-20 mx-96 shadow-2xl rounded-2xl">
-                <form className='p-10' onSubmit={enterLocation}>
-                    <input
-                        style={styleText}
-                        className="bg-transparent border border-current text-center w-full text-xl p-2"
-                        type="text"
-                        value={location}
-                        onChange={currentLocation}
-                        placeholder="Enter location"
+        <section>
+            <form className="mx-96" onSubmit={enterLocation}>
+                <input
+                    style={styleText}
+                    className="bg-transparent border-b border-current focus:outline-none text-center w-full text-xl p-2"
+                    type="text"
+                    value={location}
+                    onChange={currentLocation}
+                    placeholder="Enter location"
+                />
+            </form>
+            <section className='rounded-[50px] overflow-hidden mt-10 drop-shadow-bg'>
+                <div className="bg-[url(./background.jpg)] bg-cover">
+                    <Weather
+                        isVisible={isVisible}
+                        weather={weather}
+                        styleText={styleText}
+                        isLoading={isLoading}
+                        setIsLoading={setIsLoading}
                     />
-                </form>
-                <Weather isVisible={isVisible} weather={weather} styleText={styleText} isLoading={isLoading} setIsLoading={setIsLoading} />
+                </div>
+            </section>
         </section>
     )
 }
 
-Time.propTypes = {
+Location.propTypes = {
     styleText: PropTypes.object,
     styleBackground: PropTypes.object,
 }

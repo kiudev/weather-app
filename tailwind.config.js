@@ -6,7 +6,11 @@ export default {
             colors: {
                 dark: '#181818',
                 light: '#eeeeee'
+            },
+            dropShadow: {
+                bg: '0 10px 5px rgba(0, 0, 0, 0.25)'
             }
+            
         },
     },
     plugins: [],
