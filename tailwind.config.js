@@ -8,7 +8,7 @@ export default {
                 light: '#eeeeee'
             },
             dropShadow: {
-                bg: '0 10px 5px rgba(0, 0, 0, 0.25)'
+                bg: '0 5px 5px rgba(0, 0, 0, 0.5)'
             }
             
         },

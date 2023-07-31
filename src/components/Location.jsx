@@ -16,11 +16,16 @@ export const Location = ({ styleText }) => {
             const response = await fetch(url)
             const data = await response.json()
             const weatherData = () => {
-                const { main, sys, weather, wind, name, timezone } = data
-                const { feels_like, humidity, temp, temp_max, temp_min } = main
-                const { country } = sys
+                const {
+                    main: { feels_like, humidity, temp, temp_max, temp_min },
+                    sys: { country },
+                    weather,
+                    wind: { deg, gust, speed },
+                    name,
+                    timezone,
+                } = data
+
                 const { icon } = weather[0]
-                const { deg, gust, speed } = wind
 
                 return {
                     name,
@@ -74,16 +79,14 @@ export const Location = ({ styleText }) => {
                     placeholder="Enter location"
                 />
             </form>
-            <section className='rounded-[50px] overflow-hidden mt-10 drop-shadow-bg'>
-                <div className="bg-[url(./background.jpg)] bg-cover">
-                    <Weather
-                        isVisible={isVisible}
-                        weather={weather}
-                        styleText={styleText}
-                        isLoading={isLoading}
-                        setIsLoading={setIsLoading}
-                    />
-                </div>
+            <section className="rounded-[50px] overflow-hidden mt-10 drop-shadow-bg p-10 mx-20">
+                <Weather
+                    isVisible={isVisible}
+                    weather={weather}
+                    styleText={styleText}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
+                />
             </section>
         </section>
     )

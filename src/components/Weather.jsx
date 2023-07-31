@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { Load } from './Load'
+import { Card, CardContent, Typography } from '@mui/material'
 
 export const Weather = ({ isVisible, weather, isLoading }) => {
     if (isLoading) {
@@ -7,10 +8,7 @@ export const Weather = ({ isVisible, weather, isLoading }) => {
     }
 
     return (
-        <section
-            style={{ display: isVisible ? 'block' : 'none' }}
-            className="p-10 backdrop-blur-3xl backdrop-brightness-50 drop-shadow-bg"
-        >
+        <section style={{ display: isVisible ? 'block' : 'none' }}>
             <ul className="text-center text-light">
                 <li className="text-5xl">{`${weather.name}, ${weather.country}`}</li>
             </ul>
@@ -32,6 +30,48 @@ export const Weather = ({ isVisible, weather, isLoading }) => {
                     </li>
                 </ul>
             </ul>
+            <section className="flex justify-evenly">
+                <Card
+                    sx={{ minWidth: 200, textAlign: 'center', marginTop: 10 }}
+                >
+                    <CardContent>
+                        <Typography variant="h5">Feels Like</Typography>
+                        <Typography sx={{ fontSize: 50 }} color="text.primary">
+                            {`${parseInt(weather.feelsLike)}°C`}
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <Card
+                    sx={{ minWidth: 200, textAlign: 'center', marginTop: 10 }}
+                >
+                    <CardContent>
+                        <Typography variant="h5">Humidity</Typography>
+                        <Typography sx={{ fontSize: 50 }} color="text.primary">
+                            {`${weather.humidity}%`}
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <Card
+                    sx={{ minWidth: 200, textAlign: 'center', marginTop: 10 }}
+                >
+                    <CardContent>
+                        <Typography variant="h5">Minimum</Typography>
+                        <Typography sx={{ fontSize: 50 }} color="text.primary">
+                            {`${parseInt(weather.tempMin)}°C`}
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <Card
+                    sx={{ minWidth: 200, textAlign: 'center', marginTop: 10 }}
+                >
+                    <CardContent>
+                        <Typography variant="h5">Maximum</Typography>
+                        <Typography sx={{ fontSize: 50 }} color="text.primary">
+                            {`${parseInt(weather.tempMax)}°C`}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </section>
         </section>
     )
 }
