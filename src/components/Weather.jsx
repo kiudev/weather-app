@@ -2,13 +2,13 @@ import PropTypes from 'prop-types'
 import { Load } from './Load'
 import { Card, CardContent, Typography } from '@mui/material'
 
-export const Weather = ({ isVisible, weather, isLoading }) => {
+export const Weather = ({ weather, isLoading }) => {
     if (isLoading) {
         return <Load />
     }
 
     return (
-        <section style={{ display: isVisible ? 'block' : 'none' }}>
+        <section>
             <ul className="text-center text-light">
                 <li className="text-5xl">{`${weather.name}, ${weather.country}`}</li>
             </ul>
@@ -77,7 +77,6 @@ export const Weather = ({ isVisible, weather, isLoading }) => {
 }
 
 Weather.propTypes = {
-    isVisible: PropTypes.bool,
     weather: PropTypes.array,
     styleText: PropTypes.object,
     isLoading: PropTypes.bool,

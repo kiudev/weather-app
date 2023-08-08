@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { Location } from './components/Location'
 import { ToggleSwitch } from './components/ToggleSwitch'
 import { Footer } from './components/Footer'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     const dark = 'linear-gradient(250deg, #181818 , #20ACC2 400%)'
@@ -25,7 +23,6 @@ function App() {
         >
             <header>
                 <ToggleSwitch click={changeTheme} />
-                <ToastContainer />
             </header>
             <section className="mx-72">
                 <Location
